@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="KREASI CBT - Platform ujian daring interaktif untuk evaluasi siswa SD Kelas 4 dengan analisis butir soal otomatis.">
   <title>KREASI CBT Kelas 4 SD - Platform Evaluasi dan Analisis Siswa</title>
-  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script crossorigin="anonymous" src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin="anonymous" src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script crossorigin="anonymous" src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     const { useState, useEffect, useCallback } = React;
@@ -16,10 +16,20 @@
   <link rel="stylesheet" href="css/print.css">
 </head>
 <body>
+  <div id="error-log" style="color: red; padding: 20px; font-family: monospace; white-space: pre-wrap;"></div>
+  <script>
+    window.addEventListener('error', function(e) {
+      document.getElementById('error-log').innerText += 'Error: ' + e.message + '\nFile: ' + e.filename + '\nLine: ' + e.lineno + '\n\n';
+    });
+    window.addEventListener('unhandledrejection', function(e) {
+      document.getElementById('error-log').innerText += 'Promise Rejection: ' + e.reason + '\n\n';
+    });
+  </script>
   <div id="root"></div>
   <script src="js/data/initialData.js"></script>
   <script src="js/utils/storage.js"></script>
   <script type="text/babel" src="js/components/Header.js"></script>
+  <script type="text/babel" src="js/components/Footer.js"></script>
   <script type="text/babel" src="js/components/Notification.js"></script>
   <script type="text/babel" src="js/components/LandingPage.js"></script>
   <script type="text/babel" src="js/components/StudentSetup.js"></script>
